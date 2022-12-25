@@ -18,12 +18,10 @@ app.get('/',(req,res) => {
     //     return res.json(text)
 
     // })
-    return res.json("hello")
-})
-
-app.get('/:url',async (req,res)=>{
-    var upwork_url = req.params.url
-    console.log(req)
+  if(req.query.url){
+        var upwork_url = req.query.url
+//       return res.json(req)
+// console.log(req)
     var full_url = URL+upwork_url
     axios.get(full_url)
     .then((response)=>{
@@ -32,6 +30,12 @@ app.get('/:url',async (req,res)=>{
         return res.json(text)
 
     })
+  }else{
+        return res.json("hello")
+  }
+})
+
+app.get('/?url',async (req,res)=>{
 
 })
 
