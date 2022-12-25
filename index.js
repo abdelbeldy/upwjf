@@ -8,22 +8,23 @@ const app = express()
 
 app.listen(PORT, ()=> console.log(`server running on PORT ${PORT}`))
 
-const URL = "https://hook.integromat.com/gby358jmmanrxksxsr5234v3aevlywzf"//'http://api.scraperapi.com?api_key=172a9ae9e83fc715c3ac36882d75e835&url=https://www.upwork.com/jobs/Improve-and-Publish-google-apps-script_~016d89367235548118?source=rss'
-
+const URL = 'http://api.scraperapi.com?api_key=172a9ae9e83fc715c3ac36882d75e835&url='//'https://hook.integromat.com/gby358jmmanrxksxsr5234v3aevlywzf'//https://www.upwork.com/jobs/Improve-and-Publish-google-apps-script_~016d89367235548118?source=rss
+const test = 'https://hook.integromat.com/gby358jmmanrxksxsr5234v3aevlywzf'
 app.get('/',(req,res) => {
-    axios.get(URL)
-    .then((response)=>{
-        var html = response.data
-        text = get_Elements(html)
-        return res.json(text)
+    // axios.get(test)
+    // .then((response)=>{
+    //     var html = response.data
+    //     text = get_Elements(html)
+    //     return res.json(text)
 
-    })
-    return "hello"
+    // })
+    return res.json("hello")
 })
 
 app.get('/:url',async (req,res)=>{
     var upwork_url = req.params.url
-    var full_url = url+upwork_url
+    console.log(req)
+    var full_url = URL+upwork_url
     axios.get(full_url)
     .then((response)=>{
         var html = response.data
