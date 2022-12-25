@@ -18,6 +18,7 @@ app.get('/',(req,res) => {
         return res.json(text)
 
     })
+    return "hello"
 })
 
 app.get('/:url',async (req,res)=>{
