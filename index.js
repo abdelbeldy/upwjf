@@ -7,8 +7,9 @@ const app = express()
 
 
 app.listen(PORT, ()=> console.log(`server running on PORT ${PORT}`))
+const scraper_key = process.env['scraper_key']
 
-const URL = 'http://api.scraperapi.com?api_key=172a9ae9e83fc715c3ac36882d75e835&url='//'https://hook.integromat.com/gby358jmmanrxksxsr5234v3aevlywzf'//https://www.upwork.com/jobs/Improve-and-Publish-google-apps-script_~016d89367235548118?source=rss
+const URL = 'http://api.scraperapi.com?api_key='+scraper_key+'&url='//'https://hook.integromat.com/gby358jmmanrxksxsr5234v3aevlywzf'//https://www.upwork.com/jobs/Improve-and-Publish-google-apps-script_~016d89367235548118?source=rss
 const test = 'https://hook.integromat.com/gby358jmmanrxksxsr5234v3aevlywzf'
 app.get('/',(req,res) => {
     // axios.get(test)
