@@ -7,10 +7,10 @@ const app = express()
 
 
 app.listen(PORT, ()=> console.log(`server running on PORT ${PORT}`))
-const scraper_key = process.env['scraper_key']
+//const scraper_key = process.env['scraper_key']
 
-const URL = 'http://api.scraperapi.com?api_key='+scraper_key+'&url='//'https://hook.integromat.com/gby358jmmanrxksxsr5234v3aevlywzf'//https://www.upwork.com/jobs/Improve-and-Publish-google-apps-script_~016d89367235548118?source=rss
-const test = 'https://hook.integromat.com/gby358jmmanrxksxsr5234v3aevlywzf'
+// const URL = 'http://api.scraperapi.com?api_key='+scraper_key+'&url='//'https://hook.integromat.com/gby358jmmanrxksxsr5234v3aevlywzf'//https://www.upwork.com/jobs/Improve-and-Publish-google-apps-script_~016d89367235548118?source=rss
+//const test = 'https://hook.integromat.com/gby358jmmanrxksxsr5234v3aevlywzf'
 app.get('/',(req,res) => {
     // axios.get(test)
     // .then((response)=>{
@@ -19,18 +19,24 @@ app.get('/',(req,res) => {
     //     return res.json(text)
 
     // })
-  if(req.query.url){
-        var upwork_url = req.query.url
+  if(req.query.purl){
+        var upwork_url = req.query.purl
+   // console.log(upwork_url)
 //       return res.json(req)
 // console.log(req)
-    var full_url = URL+upwork_url
-    axios.get(full_url)
+    //var full_url = 
+    try{
+     axios.get(upwork_url)
     .then((response)=>{
         var html = response.data
         text = get_Elements(html)
         return res.json(text)
 
     })
+    }catch(e){
+      return console.log(e)
+    }
+
   }else{
         return res.json("hello")
   }
